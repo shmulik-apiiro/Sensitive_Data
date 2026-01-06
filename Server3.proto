@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+
+
+option java_multiple_files = true;
+
+
+package protoapi;
+
+service ProtoServer3 {
+  rpc GetPerson (PersonRequest3) returns (Person3) {
+    option (google.api.http) = {
+      get : "/url3"
+    };
+
+  }
+  rpc GetFullPerson (PersonRequest3) returns (Person3) {
+    option (google.api.http).post = "/v3";
+    option (google.api.http).body = "*";
+
+  }
+  rpc StreamClientStatus(stream PersonRequest3) returns (stream Person3) {
+
+  }
+}
+message PersonRequest3 {
+  string name = 1;
+}
+
+message Person3 {
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+  string username = 4;
+  string ownerName = 5;
+  string creditCardNumber = 6;
+}

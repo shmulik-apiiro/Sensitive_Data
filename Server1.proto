@@ -1,0 +1,36 @@
+  syntax = "proto3";
+
+  import "google/api/annotations.proto";
+
+  package com.apiiro.proto;
+
+  service ProtoServer1 {
+    rpc GetPerson (PersonRequest1) returns (PersonResponse1) {
+      option (google.api.http) = {
+        get : "/url1"
+      };
+
+    }
+    rpc GetFullPerson (PersonRequest1) returns (PersonResponse1) {
+      option (google.api.http).post = "/v1";
+      option (google.api.http).body = "*";
+
+    }
+    rpc StreamClientStatus(stream PersonRequest1) returns (stream PersonResponse1) {
+      option (google.api.http).post = "/sv1";
+    }
+  }
+  message PersonRequest1 {
+    string name = 1;
+  }
+
+  message PersonResponse1 {
+    string name = 1;
+    int32 id =2;
+    string email = 3;
+    string username = 4;
+    string ownerName = 5;
+    string creditCardNumber = 6;
+    string address = 7;
+  }
+

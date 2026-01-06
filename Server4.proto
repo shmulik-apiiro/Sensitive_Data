@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+
+
+
+option java_outer_classname = "HelloWorld";
+
+package protoapi;
+
+service ProtoServer4{
+  rpc GetPerson (PersonRequest4) returns (Person4) {
+    option (google.api.http) = {
+      get : "/url4"
+    };
+
+  }
+  rpc GetFullPerson (PersonRequest4) returns (Person4) {
+    option (google.api.http).post = "/v4";
+    option (google.api.http).body = "*";
+
+  }
+  rpc StreamClientStatus(stream PersonRequest4) returns (stream Person4) {
+
+  }
+}
+message PersonRequest4 {
+  string name = 1;
+}
+
+message Person4{
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+  string username = 4;
+  string ownerName = 5;
+  string creditCardNumber = 6;
+}

@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+
+option java_package = "com.apiiro.avigtest.protoapi";
+
+package protoapi;
+
+service ProtoServer2 {
+  rpc GetPerson (PersonRequest2) returns (Person) {
+    option (google.api.http) = {
+      get : "/url2"
+    };
+
+  }
+  rpc GetFullPerson (PersonRequest2) returns (Person) {
+    option (google.api.http).post = "/v2";
+    option (google.api.http).body = "*";
+
+  }
+  rpc StreamClientStatus(stream PersonRequest2) returns (stream Person) {
+    option (google.api.http).post = "/sv2";
+    option (google.api.http).body = "*";
+  }
+}
+message PersonRequest2 {
+  string name = 1;
+}
+
+message Person {
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+  string username = 4;
+  string ownerName = 5;
+  string creditCardNumber = 6;
+}
+
