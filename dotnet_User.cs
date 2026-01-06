@@ -1,5 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-#TEST#
+
 namespace Apiirozon.Models;
 
 public class User : Entity
