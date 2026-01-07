@@ -1,5 +1,6 @@
 package com.hillel.items_exchange.model;
-
+#TEST#
+	
 import lombok.*;
 
 import javax.persistence.*;
