@@ -2,7 +2,7 @@
 
 using Newtonsoft.Json;
 
-namespace AccountService.Okta.Models;
+namespace AccountService.Okta.Models; 
 
 public class OktaUserProfile
 {
